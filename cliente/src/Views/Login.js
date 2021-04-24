@@ -1,9 +1,8 @@
 import React, { useState } from 'react';
-import Axios from 'axios';
 import Main from '../Componets/Main';
+import {Link} from 'react-router-dom';
 
-
-export default function Login() {
+export default function Login({login, mostrarError}) {
 
     const [usuario, setUsuario] = useState({
         email: '',
@@ -21,10 +20,12 @@ export default function Login() {
     async function handleSubmit(e) {
         e.preventDefault();
         try {
-            const { data } = await Axios.post('/api/usuarios/login', usuario);
-            console.log(data);
+            await login(usuario.email, usuario.password);
+            //const { data } = await Axios.post('/api/usuarios/login', usuario);
+            //console.log(data);
         } catch (ex) {
-            console.log(ex)
+            mostrarError(ex.response.data);
+            //console.log(ex)
         }
     }
 
@@ -40,7 +41,7 @@ export default function Login() {
                         <input type="password" name="password" placeholder="Contraseña" className="Form__field" required minLength="3" maxLength="30" onChange={handleInputChange} value={usuario.password} />
                         <button className="Form__submit" type="submit">Login</button>
                         <p className="FormContainer__info">
-                            No tienen una cuenta? <a href="/singup">Login</a>
+                            No tienen una cuenta? <Link to="/singup">Login</Link>
                         </p>
                     </form>
                 </div>

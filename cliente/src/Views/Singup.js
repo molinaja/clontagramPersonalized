@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
-import Axios from 'axios';
 import Main from '../Componets/Main';
 import imageSignup from "../imagenes/signup.png";
+import {Link} from 'react-router-dom';
 
-export default function Singup() {
+export default function Singup({signup, mostrarError}) {
 
     const [usuario, setUsuario] = useState({
         email: '',
@@ -23,9 +23,9 @@ export default function Singup() {
     async function handleSubmit(e) {
         e.preventDefault();
         try {
-            const { data } = await Axios.post('/api/usuarios/signup', usuario);
-            console.log(data);
+            await signup(usuario);
         } catch (ex) {
+            mostrarError(ex.response.data);
             console.log(ex)
         }
     }
@@ -47,7 +47,7 @@ export default function Singup() {
                         <input type="password" name="password" placeholder="Contraseña" className="Form__field" required minLength="3" maxLength="30" onChange={handleInputChange} value={usuario.password} />
                         <button className="Form__submit" type="submit">Sign up</button>
                         <p className="FormContainer__info">
-                            Ya tienen una cuenta? <a href="/login">Login</a>
+                            Ya tienen una cuenta? <Link to="/login">Login</Link>
                         </p>
                     </form>
                 </div>
