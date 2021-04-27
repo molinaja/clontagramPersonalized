@@ -69,9 +69,9 @@ export default function App() {
 
   }
 
-  function mostrarError(mesaje) {
-
-    setError(mesaje);
+  function mostrarError(mensaje) {
+    console.log(mensaje);
+    setError(mensaje);
   }
 
   function quitarError() {
