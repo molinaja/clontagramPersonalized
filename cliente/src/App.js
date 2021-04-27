@@ -7,10 +7,12 @@ import Loading from './Componets/Loading';
 import Main from './Componets/Main';
 import Error from './Componets/Error';
 
+
 import { deleteToken, setToken, getToken, initAxiosInterceptor } from './Helpers/auth-helpers';
 
 import Singup from './Views/Singup';
 import Login from './Views/Login';
+import Upload from './Views/Upload';
 
 initAxiosInterceptor();
 
@@ -72,7 +74,7 @@ export default function App() {
     setError(mesaje);
   }
 
-  function quitarError(){
+  function quitarError() {
 
     setError(null);
   }
@@ -89,22 +91,29 @@ export default function App() {
 
   return (
     <Router>
-      <Nav />
-      <Error mensaje={error} esconderError={quitarError}/>
+      <Nav usuario={usuario}/>
+      <Error mensaje={error} esconderError={quitarError} />
       {
         usuario
-          ? (<LoginRoutes />)
+          ? (<LoginRoutes mostrarError={mostrarError} />)
           : (<LogoutRoutes login={login} signup={signup} mostrarError={mostrarError} />)
       }
     </Router>
   );
 }
 
-function LoginRoutes() {
+function LoginRoutes({ mostrarError }) {
 
   return (
 
     <Switch>
+
+      <Route
+        path="/upload"
+        render={
+          props => <Upload {...props} mostrarError={mostrarError} />
+        }
+      />
 
       <Route
         path="/"
