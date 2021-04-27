@@ -5,9 +5,8 @@
 Base tomada de clontagram.com y appdelante.com
 Implementacion de react y logica de molinaja 
 
-El repositorio tiene dos carpetas, una llamada servidor y otra llamada cliente. El servidor es una aplicación de Node.js, y el cliente es una aplicación de React.js.
-
-En el curso nos vamos a estar enfocando unicamente en el cliente. Pero necesitamos el servidor para poder pedir y guardar data.
+El repositorio tiene dos carpetas, una llamada servidor(tomada en su totalidad de appdelante.com) y otra llamada cliente(cliente React  donde se tomo los estilos de appdelante pero la logica de implementacion es propia molinaja). 
+El servidor es una aplicación de Node.js, y el cliente es una aplicación de React.js.
 
 ## Pasos para ejecutar el proyecto
 
