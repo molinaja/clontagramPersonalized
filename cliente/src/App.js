@@ -13,6 +13,7 @@ import { deleteToken, setToken, getToken, initAxiosInterceptor } from './Helpers
 import Singup from './Views/Singup';
 import Login from './Views/Login';
 import Upload from './Views/Upload';
+import Feed from './Views/Feed';
 
 initAxiosInterceptor();
 
@@ -117,12 +118,8 @@ function LoginRoutes({ mostrarError }) {
 
       <Route
         path="/"
-        component={
-          () => (
-            <Main center={true}>
-              <h1>Soy el feed</h1>
-            </Main>
-          )
+        render={
+          props => <Feed {...props} mostrarError={mostrarError} />
         }
         default
       />
