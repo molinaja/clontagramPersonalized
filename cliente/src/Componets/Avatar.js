@@ -16,8 +16,8 @@ export default function Avatar({usuario}){
 
 export function ImagenAvatar({usuario}){
     const styles ={
-        backgroundImage: usuario.imagen ? `url(${usuario.imagen})`:null,
-        backgroundColor: stringToColor(usuario.username)
+    backgroundImage: usuario.imagen ? `url(${usuario.imagen})`:null,
+    backgroundColor: stringToColor(usuario.username)
     }
 
     return (
