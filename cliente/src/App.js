@@ -43,6 +43,7 @@ export default function App() {
           console.log(ex);
         }
       }
+      
 
       cargarUsuario();
     }, []);
@@ -92,18 +93,18 @@ export default function App() {
 
   return (
     <Router>
-      <Nav usuario={usuario}/>
+      <Nav usuario={usuario} />
       <Error mensaje={error} esconderError={quitarError} />
       {
         usuario
-          ? (<LoginRoutes mostrarError={mostrarError} />)
+          ? (<LoginRoutes mostrarError={mostrarError}  usuario={usuario}/>)
           : (<LogoutRoutes login={login} signup={signup} mostrarError={mostrarError} />)
       }
     </Router>
   );
 }
 
-function LoginRoutes({ mostrarError }) {
+function LoginRoutes({ mostrarError, usuario }) {
 
   return (
 
@@ -119,7 +120,7 @@ function LoginRoutes({ mostrarError }) {
       <Route
         path="/"
         render={
-          props => <Feed {...props} mostrarError={mostrarError} />
+          props => <Feed {...props} mostrarError={mostrarError} usuario={usuario}/>
         }
         default
       />

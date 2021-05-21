@@ -41,7 +41,7 @@ export default function Login({login, mostrarError}) {
                         <input type="password" name="password" placeholder="Contraseña" className="Form__field" required minLength="3" maxLength="30" onChange={handleInputChange} value={usuario.password} />
                         <button className="Form__submit" type="submit">Login</button>
                         <p className="FormContainer__info">
-                            No tienen una cuenta? <Link to="/singup">Login</Link>
+                            No tienen una cuenta? <Link to="/singup">Sing up</Link>
                         </p>
                     </form>
                 </div>
